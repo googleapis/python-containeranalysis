@@ -75,17 +75,11 @@ class TestContainerAnalysisClient(object):
             create_channel.return_value = channel
             client = containeranalysis_v1.ContainerAnalysisClient()
 
-        # Setup Request
-        resource = client.note_path("[PROJECT]", "[NOTE]")
-        policy = {}
-
-        response = client.set_iam_policy(resource, policy)
+        response = client.set_iam_policy()
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = iam_policy_pb2.SetIamPolicyRequest(
-            resource=resource, policy=policy
-        )
+        expected_request = iam_policy_pb2.SetIamPolicyRequest()
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
@@ -97,12 +91,8 @@ class TestContainerAnalysisClient(object):
             create_channel.return_value = channel
             client = containeranalysis_v1.ContainerAnalysisClient()
 
-        # Setup request
-        resource = client.note_path("[PROJECT]", "[NOTE]")
-        policy = {}
-
         with pytest.raises(CustomException):
-            client.set_iam_policy(resource, policy)
+            client.set_iam_policy()
 
     def test_get_iam_policy(self):
         # Setup Expected Response
@@ -118,14 +108,11 @@ class TestContainerAnalysisClient(object):
             create_channel.return_value = channel
             client = containeranalysis_v1.ContainerAnalysisClient()
 
-        # Setup Request
-        resource = client.note_path("[PROJECT]", "[NOTE]")
-
-        response = client.get_iam_policy(resource)
+        response = client.get_iam_policy()
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = iam_policy_pb2.GetIamPolicyRequest(resource=resource)
+        expected_request = iam_policy_pb2.GetIamPolicyRequest()
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
@@ -137,11 +124,8 @@ class TestContainerAnalysisClient(object):
             create_channel.return_value = channel
             client = containeranalysis_v1.ContainerAnalysisClient()
 
-        # Setup request
-        resource = client.note_path("[PROJECT]", "[NOTE]")
-
         with pytest.raises(CustomException):
-            client.get_iam_policy(resource)
+            client.get_iam_policy()
 
     def test_test_iam_permissions(self):
         # Setup Expected Response
@@ -157,17 +141,11 @@ class TestContainerAnalysisClient(object):
             create_channel.return_value = channel
             client = containeranalysis_v1.ContainerAnalysisClient()
 
-        # Setup Request
-        resource = client.note_path("[PROJECT]", "[NOTE]")
-        permissions = []
-
-        response = client.test_iam_permissions(resource, permissions)
+        response = client.test_iam_permissions()
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = iam_policy_pb2.TestIamPermissionsRequest(
-            resource=resource, permissions=permissions
-        )
+        expected_request = iam_policy_pb2.TestIamPermissionsRequest()
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
@@ -179,9 +157,5 @@ class TestContainerAnalysisClient(object):
             create_channel.return_value = channel
             client = containeranalysis_v1.ContainerAnalysisClient()
 
-        # Setup request
-        resource = client.note_path("[PROJECT]", "[NOTE]")
-        permissions = []
-
         with pytest.raises(CustomException):
-            client.test_iam_permissions(resource, permissions)
+            client.test_iam_permissions()

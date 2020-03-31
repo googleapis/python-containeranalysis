@@ -26,7 +26,6 @@ import google.api_core.gapic_v1.config
 import google.api_core.gapic_v1.method
 import google.api_core.gapic_v1.routing_header
 import google.api_core.grpc_helpers
-import google.api_core.path_template
 import grpc
 
 from google.cloud.devtools.containeranalysis_v1.gapic import (
@@ -93,22 +92,6 @@ class ContainerAnalysisClient(object):
         return cls(*args, **kwargs)
 
     from_service_account_json = from_service_account_file
-
-    @classmethod
-    def note_path(cls, project, note):
-        """Return a fully-qualified note string."""
-        return google.api_core.path_template.expand(
-            "projects/{project}/notes/{note}", project=project, note=note
-        )
-
-    @classmethod
-    def occurrence_path(cls, project, occurrence):
-        """Return a fully-qualified occurrence string."""
-        return google.api_core.path_template.expand(
-            "projects/{project}/occurrences/{occurrence}",
-            project=project,
-            occurrence=occurrence,
-        )
 
     def __init__(
         self,
@@ -237,8 +220,8 @@ class ContainerAnalysisClient(object):
     # Service calls
     def set_iam_policy(
         self,
-        resource,
-        policy,
+        resource=None,
+        policy=None,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
         metadata=None,
@@ -258,12 +241,7 @@ class ContainerAnalysisClient(object):
             >>>
             >>> client = containeranalysis_v1.ContainerAnalysisClient()
             >>>
-            >>> resource = client.note_path('[PROJECT]', '[NOTE]')
-            >>>
-            >>> # TODO: Initialize `policy`:
-            >>> policy = {}
-            >>>
-            >>> response = client.set_iam_policy(resource, policy)
+            >>> response = client.set_iam_policy()
 
         Args:
             resource (str): REQUIRED: The resource for which the policy is being specified.
@@ -325,7 +303,7 @@ class ContainerAnalysisClient(object):
 
     def get_iam_policy(
         self,
-        resource,
+        resource=None,
         options_=None,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
@@ -346,9 +324,7 @@ class ContainerAnalysisClient(object):
             >>>
             >>> client = containeranalysis_v1.ContainerAnalysisClient()
             >>>
-            >>> resource = client.note_path('[PROJECT]', '[NOTE]')
-            >>>
-            >>> response = client.get_iam_policy(resource)
+            >>> response = client.get_iam_policy()
 
         Args:
             resource (str): REQUIRED: The resource for which the policy is being requested.
@@ -410,8 +386,8 @@ class ContainerAnalysisClient(object):
 
     def test_iam_permissions(
         self,
-        resource,
-        permissions,
+        resource=None,
+        permissions=None,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
         metadata=None,
@@ -430,12 +406,7 @@ class ContainerAnalysisClient(object):
             >>>
             >>> client = containeranalysis_v1.ContainerAnalysisClient()
             >>>
-            >>> resource = client.note_path('[PROJECT]', '[NOTE]')
-            >>>
-            >>> # TODO: Initialize `permissions`:
-            >>> permissions = []
-            >>>
-            >>> response = client.test_iam_permissions(resource, permissions)
+            >>> response = client.test_iam_permissions()
 
         Args:
             resource (str): REQUIRED: The resource for which the policy detail is being requested.
