@@ -116,14 +116,11 @@ class ContainerAnalysisGrpcTransport(object):
     def set_iam_policy(self):
         """Return the gRPC stub for :meth:`ContainerAnalysisClient.set_iam_policy`.
 
-        Sets the access control policy on the specified note or occurrence.
-        Requires ``containeranalysis.notes.setIamPolicy`` or
-        ``containeranalysis.occurrences.setIamPolicy`` permission if the
-        resource is a note or an occurrence, respectively.
-
-        The resource takes the format ``projects/[PROJECT_ID]/notes/[NOTE_ID]``
-        for notes and ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`` for
-        occurrences.
+        If set, all the classes from the .proto file are wrapped in a single
+        outer class with the given name. This applies to both Proto1 (equivalent
+        to the old "--one_java_file" option) and Proto2 (where a .proto always
+        translates to a single class, but you may want to explicitly choose the
+        class name).
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -136,14 +133,29 @@ class ContainerAnalysisGrpcTransport(object):
     def get_iam_policy(self):
         """Return the gRPC stub for :meth:`ContainerAnalysisClient.get_iam_policy`.
 
-        Gets the access control policy for a note or an occurrence resource.
-        Requires ``containeranalysis.notes.setIamPolicy`` or
-        ``containeranalysis.occurrences.setIamPolicy`` permission if the
-        resource is a note or occurrence, respectively.
+        Specifies the identities requesting access for a Cloud Platform
+        resource. ``members`` can have the following values:
 
-        The resource takes the format ``projects/[PROJECT_ID]/notes/[NOTE_ID]``
-        for notes and ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`` for
-        occurrences.
+        -  ``allUsers``: A special identifier that represents anyone who is on
+           the internet; with or without a Google account.
+
+        -  ``allAuthenticatedUsers``: A special identifier that represents
+           anyone who is authenticated with a Google account or a service
+           account.
+
+        -  ``user:{emailid}``: An email address that represents a specific
+           Google account. For example, ``alice@example.com`` .
+
+        -  ``serviceAccount:{emailid}``: An email address that represents a
+           service account. For example,
+           ``my-other-app@appspot.gserviceaccount.com``.
+
+        -  ``group:{emailid}``: An email address that represents a Google group.
+           For example, ``admins@example.com``.
+
+        -  ``domain:{domain}``: The G Suite domain (primary) that represents all
+           the users of that domain. For example, ``google.com`` or
+           ``example.com``.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -156,13 +168,30 @@ class ContainerAnalysisGrpcTransport(object):
     def test_iam_permissions(self):
         """Return the gRPC stub for :meth:`ContainerAnalysisClient.test_iam_permissions`.
 
-        Returns the permissions that a caller has on the specified note or
-        occurrence. Requires list permission on the project (for example,
-        ``containeranalysis.notes.list``).
+        Optional. The relative resource name pattern associated with this
+        resource type. The DNS prefix of the full resource name shouldn't be
+        specified here.
 
-        The resource takes the format ``projects/[PROJECT_ID]/notes/[NOTE_ID]``
-        for notes and ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`` for
-        occurrences.
+        The path pattern must follow the syntax, which aligns with HTTP binding
+        syntax:
+
+        ::
+
+            Template = Segment { "/" Segment } ;
+            Segment = LITERAL | Variable ;
+            Variable = "{" LITERAL "}" ;
+
+        Examples:
+
+        ::
+
+            - "projects/{project}/topics/{topic}"
+            - "projects/{project}/knowledgeBases/{knowledge_base}"
+
+        The components in braces correspond to the IDs for each resource in the
+        hierarchy. It is expected that, if multiple patterns are provided, the
+        same component name (e.g. "project") refers to IDs of the same type of
+        resource.
 
         Returns:
             Callable: A callable which accepts the appropriate

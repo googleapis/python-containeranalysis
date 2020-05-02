@@ -50,20 +50,8 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution(
 
 class ContainerAnalysisClient(object):
     """
-    Retrieves analysis results of Cloud components such as Docker container
-    images. The Container Analysis API is an implementation of the
-    `Grafeas <https://grafeas.io>`__ API.
-
-    Analysis results are stored as a series of occurrences. An
-    ``Occurrence`` contains information about a specific analysis instance
-    on a resource. An occurrence refers to a ``Note``. A note contains
-    details describing the analysis and is generally stored in a separate
-    project, called a ``Provider``. Multiple occurrences can refer to the
-    same note.
-
-    For example, an SSL vulnerability could affect multiple images. In this
-    case, there would be one note for the vulnerability and an occurrence
-    for each image with the vulnerability referring to that note.
+    An annotation that describes a resource definition, see
+    ``ResourceDescriptor``.
     """
 
     SERVICE_ADDRESS = "containeranalysis.googleapis.com:443"
@@ -227,14 +215,11 @@ class ContainerAnalysisClient(object):
         metadata=None,
     ):
         """
-        Sets the access control policy on the specified note or occurrence.
-        Requires ``containeranalysis.notes.setIamPolicy`` or
-        ``containeranalysis.occurrences.setIamPolicy`` permission if the
-        resource is a note or an occurrence, respectively.
-
-        The resource takes the format ``projects/[PROJECT_ID]/notes/[NOTE_ID]``
-        for notes and ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`` for
-        occurrences.
+        If set, all the classes from the .proto file are wrapped in a single
+        outer class with the given name. This applies to both Proto1 (equivalent
+        to the old "--one_java_file" option) and Proto2 (where a .proto always
+        translates to a single class, but you may want to explicitly choose the
+        class name).
 
         Example:
             >>> from google.cloud.devtools import containeranalysis_v1
@@ -252,10 +237,20 @@ class ContainerAnalysisClient(object):
         Args:
             resource (str): REQUIRED: The resource for which the policy is being specified.
                 See the operation documentation for the appropriate value for this field.
-            policy (Union[dict, ~google.cloud.devtools.containeranalysis_v1.types.Policy]): REQUIRED: The complete policy to be applied to the ``resource``. The
-                size of the policy is limited to a few 10s of KB. An empty policy is a
-                valid policy but certain Cloud Platform services (such as Projects)
-                might reject them.
+            policy (Union[dict, ~google.cloud.devtools.containeranalysis_v1.types.Policy]): Retrieves analysis results of Cloud components such as Docker
+                container images. The Container Analysis API is an implementation of the
+                `Grafeas <https://grafeas.io>`__ API.
+
+                Analysis results are stored as a series of occurrences. An
+                ``Occurrence`` contains information about a specific analysis instance
+                on a resource. An occurrence refers to a ``Note``. A note contains
+                details describing the analysis and is generally stored in a separate
+                project, called a ``Provider``. Multiple occurrences can refer to the
+                same note.
+
+                For example, an SSL vulnerability could affect multiple images. In this
+                case, there would be one note for the vulnerability and an occurrence
+                for each image with the vulnerability referring to that note.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.devtools.containeranalysis_v1.types.Policy`
@@ -316,14 +311,29 @@ class ContainerAnalysisClient(object):
         metadata=None,
     ):
         """
-        Gets the access control policy for a note or an occurrence resource.
-        Requires ``containeranalysis.notes.setIamPolicy`` or
-        ``containeranalysis.occurrences.setIamPolicy`` permission if the
-        resource is a note or occurrence, respectively.
+        Specifies the identities requesting access for a Cloud Platform
+        resource. ``members`` can have the following values:
 
-        The resource takes the format ``projects/[PROJECT_ID]/notes/[NOTE_ID]``
-        for notes and ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`` for
-        occurrences.
+        -  ``allUsers``: A special identifier that represents anyone who is on
+           the internet; with or without a Google account.
+
+        -  ``allAuthenticatedUsers``: A special identifier that represents
+           anyone who is authenticated with a Google account or a service
+           account.
+
+        -  ``user:{emailid}``: An email address that represents a specific
+           Google account. For example, ``alice@example.com`` .
+
+        -  ``serviceAccount:{emailid}``: An email address that represents a
+           service account. For example,
+           ``my-other-app@appspot.gserviceaccount.com``.
+
+        -  ``group:{emailid}``: An email address that represents a Google group.
+           For example, ``admins@example.com``.
+
+        -  ``domain:{domain}``: The G Suite domain (primary) that represents all
+           the users of that domain. For example, ``google.com`` or
+           ``example.com``.
 
         Example:
             >>> from google.cloud.devtools import containeranalysis_v1
@@ -338,8 +348,37 @@ class ContainerAnalysisClient(object):
         Args:
             resource (str): REQUIRED: The resource for which the policy is being requested.
                 See the operation documentation for the appropriate value for this field.
-            options_ (Union[dict, ~google.cloud.devtools.containeranalysis_v1.types.GetPolicyOptions]): OPTIONAL: A ``GetPolicyOptions`` object for specifying options to
-                ``GetIamPolicy``. This field is only used by Cloud IAM.
+            options_ (Union[dict, ~google.cloud.devtools.containeranalysis_v1.types.GetPolicyOptions]): Each of the definitions above may have "options" attached. These are
+                just annotations which may cause code to be generated slightly
+                differently or may contain hints for code that manipulates protocol
+                messages.
+
+                Clients may define custom options as extensions of the \*Options
+                messages. These extensions may not yet be known at parsing time, so the
+                parser cannot store the values in them. Instead it stores them in a
+                field in the \*Options message called uninterpreted_option. This field
+                must have the same name across all \*Options messages. We then use this
+                field to populate the extensions when we build a descriptor, at which
+                point all protos have been parsed and so all extensions are known.
+
+                Extension numbers for custom options may be chosen as follows:
+
+                -  For options which will only be used within a single application or
+                   organization, or for experimental options, use field numbers 50000
+                   through 99999. It is up to you to ensure that you do not use the same
+                   number for multiple options.
+                -  For options which will be published and used publicly by multiple
+                   independent entities, e-mail
+                   protobuf-global-extension-registry@google.com to reserve extension
+                   numbers. Simply provide your project name (e.g. Objective-C plugin)
+                   and your project website (if available) -- there's no need to explain
+                   how you intend to use them. Usually you only need one extension
+                   number. You can declare multiple options with only one extension
+                   number by putting them in a sub-message. See the Custom Options
+                   section of the docs for examples:
+                   https://developers.google.com/protocol-buffers/docs/proto#options If
+                   this turns out to be popular, a web service will be set up to
+                   automatically assign option numbers.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.devtools.containeranalysis_v1.types.GetPolicyOptions`
@@ -402,13 +441,30 @@ class ContainerAnalysisClient(object):
         metadata=None,
     ):
         """
-        Returns the permissions that a caller has on the specified note or
-        occurrence. Requires list permission on the project (for example,
-        ``containeranalysis.notes.list``).
+        Optional. The relative resource name pattern associated with this
+        resource type. The DNS prefix of the full resource name shouldn't be
+        specified here.
 
-        The resource takes the format ``projects/[PROJECT_ID]/notes/[NOTE_ID]``
-        for notes and ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`` for
-        occurrences.
+        The path pattern must follow the syntax, which aligns with HTTP binding
+        syntax:
+
+        ::
+
+            Template = Segment { "/" Segment } ;
+            Segment = LITERAL | Variable ;
+            Variable = "{" LITERAL "}" ;
+
+        Examples:
+
+        ::
+
+            - "projects/{project}/topics/{topic}"
+            - "projects/{project}/knowledgeBases/{knowledge_base}"
+
+        The components in braces correspond to the IDs for each resource in the
+        hierarchy. It is expected that, if multiple patterns are provided, the
+        same component name (e.g. "project") refers to IDs of the same type of
+        resource.
 
         Example:
             >>> from google.cloud.devtools import containeranalysis_v1
@@ -426,10 +482,7 @@ class ContainerAnalysisClient(object):
         Args:
             resource (str): REQUIRED: The resource for which the policy detail is being requested.
                 See the operation documentation for the appropriate value for this field.
-            permissions (list[str]): The set of permissions to check for the ``resource``. Permissions with
-                wildcards (such as '*' or 'storage.*') are not allowed. For more
-                information see `IAM
-                Overview <https://cloud.google.com/iam/docs/overview#permissions>`__.
+            permissions (list[str]): Request message for ``SetIamPolicy`` method.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
