@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/googleapis/python-containeranalysis/compare/v0.3.1...v0.4.0) (2020-05-02)
+
+
+### Features
+
+* remove `note_path` and `occurence_path` (via synth) ([#7](https://www.github.com/googleapis/python-containeranalysis/issues/7)) ([656b11e](https://www.github.com/googleapis/python-containeranalysis/commit/656b11eee22f11d1109e288190fc63b6c8ff20b7))
+
 ## 0.3.1
 
 11-07-2019 11:08 PST
@@ -53,4 +60,3 @@
 
 ### New Features
 - Initial release of Container Analysis client library. ([#8381](https://github.com/googleapis/google-cloud-python/pull/8381))
-
