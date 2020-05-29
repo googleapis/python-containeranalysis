@@ -50,8 +50,8 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution(
 
 class ContainerAnalysisClient(object):
     """
-    Retrieves analysis results of Cloud components such as Docker container
-    images. The Container Analysis API is an implementation of the
+    Retrieves analysis results of Cloud components such as Docker
+    container images. The Container Analysis API is an implementation of the
     `Grafeas <https://grafeas.io>`__ API.
 
     Analysis results are stored as a series of occurrences. An
@@ -426,8 +426,8 @@ class ContainerAnalysisClient(object):
         Args:
             resource (str): REQUIRED: The resource for which the policy detail is being requested.
                 See the operation documentation for the appropriate value for this field.
-            permissions (list[str]): The set of permissions to check for the ``resource``. Permissions with
-                wildcards (such as '*' or 'storage.*') are not allowed. For more
+            permissions (list[str]): The set of permissions to check for the ``resource``. Permissions
+                with wildcards (such as '*' or 'storage.*') are not allowed. For more
                 information see `IAM
                 Overview <https://cloud.google.com/iam/docs/overview#permissions>`__.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
