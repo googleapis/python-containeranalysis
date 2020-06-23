@@ -36,4 +36,7 @@ class ContainerAnalysisClient(container_analysis_client.ContainerAnalysisClient)
     __doc__ = container_analysis_client.ContainerAnalysisClient.__doc__
 
 
-__all__ = ("types", "ContainerAnalysisClient")
+__all__ = (
+    "types",
+    "ContainerAnalysisClient",
+)

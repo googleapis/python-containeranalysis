@@ -180,12 +180,12 @@ class ContainerAnalysisClient(object):
                 self.transport = transport
         else:
             self.transport = container_analysis_grpc_transport.ContainerAnalysisGrpcTransport(
-                address=api_endpoint, channel=channel, credentials=credentials
+                address=api_endpoint, channel=channel, credentials=credentials,
             )
 
         if client_info is None:
             client_info = google.api_core.gapic_v1.client_info.ClientInfo(
-                gapic_version=_GAPIC_LIBRARY_VERSION
+                gapic_version=_GAPIC_LIBRARY_VERSION,
             )
         else:
             client_info.gapic_version = _GAPIC_LIBRARY_VERSION
@@ -196,7 +196,7 @@ class ContainerAnalysisClient(object):
         # (Ordinarily, these are the defaults specified in the `*_config.py`
         # file next to this one.)
         self._method_configs = google.api_core.gapic_v1.config.parse_method_configs(
-            client_config["interfaces"][self._INTERFACE_NAME]
+            client_config["interfaces"][self._INTERFACE_NAME],
         )
 
         # Save a dictionary of cached API call functions.
@@ -289,7 +289,7 @@ class ContainerAnalysisClient(object):
                 client_info=self._client_info,
             )
 
-        request = iam_policy_pb2.SetIamPolicyRequest(resource=resource, policy=policy)
+        request = iam_policy_pb2.SetIamPolicyRequest(resource=resource, policy=policy,)
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -374,7 +374,7 @@ class ContainerAnalysisClient(object):
             )
 
         request = iam_policy_pb2.GetIamPolicyRequest(
-            resource=resource, options=options_
+            resource=resource, options=options_,
         )
         if metadata is None:
             metadata = []
@@ -461,7 +461,7 @@ class ContainerAnalysisClient(object):
             )
 
         request = iam_policy_pb2.TestIamPermissionsRequest(
-            resource=resource, permissions=permissions
+            resource=resource, permissions=permissions,
         )
         if metadata is None:
             metadata = []
