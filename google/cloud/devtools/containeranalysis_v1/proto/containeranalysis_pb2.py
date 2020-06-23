@@ -24,6 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.devtools.containeranalysis.v1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.containeranalysis.v1P\001ZUgoogle.golang.org/genproto/googleapis/devtools/containeranalysis/v1;containeranalysis\242\002\003GCA\252\002*Google.Cloud.DevTools.ContainerAnalysis.V1\352\002$Google::Cloud::ContainerAnalysis::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\nHgoogle/cloud/devtools/containeranalysis_v1/proto/containeranalysis.proto\x12$google.devtools.containeranalysis.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1egoogle/iam/v1/iam_policy.proto\x1a\x1agoogle/iam/v1/policy.proto\x1a\x1fgoogle/protobuf/timestamp.proto2\x91\x06\n\x11\x43ontainerAnalysis\x12\xd2\x01\n\x0cSetIamPolicy\x12".google.iam.v1.SetIamPolicyRequest\x1a\x15.google.iam.v1.Policy"\x86\x01\x82\xd3\xe4\x93\x02n"./v1/{resource=projects/*/notes/*}:setIamPolicy:\x01*Z9"4/v1/{resource=projects/*/occurrences/*}:setIamPolicy:\x01*\xda\x41\x0fresource,policy\x12\xca\x01\n\x0cGetIamPolicy\x12".google.iam.v1.GetIamPolicyRequest\x1a\x15.google.iam.v1.Policy"\x7f\x82\xd3\xe4\x93\x02n"./v1/{resource=projects/*/notes/*}:getIamPolicy:\x01*Z9"4/v1/{resource=projects/*/occurrences/*}:getIamPolicy:\x01*\xda\x41\x08resource\x12\x83\x02\n\x12TestIamPermissions\x12(.google.iam.v1.TestIamPermissionsRequest\x1a).google.iam.v1.TestIamPermissionsResponse"\x97\x01\x82\xd3\xe4\x93\x02z"4/v1/{resource=projects/*/notes/*}:testIamPermissions:\x01*Z?":/v1/{resource=projects/*/occurrences/*}:testIamPermissions:\x01*\xda\x41\x14resource,permissions\x1aT\xca\x41 containeranalysis.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\xd4\x01\n\x1f\x63om.google.containeranalysis.v1P\x01ZUgoogle.golang.org/genproto/googleapis/devtools/containeranalysis/v1;containeranalysis\xa2\x02\x03GCA\xaa\x02*Google.Cloud.DevTools.ContainerAnalysis.V1\xea\x02$Google::Cloud::ContainerAnalysis::V1b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -46,6 +47,7 @@ _CONTAINERANALYSIS = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=b"\312A containeranalysis.googleapis.com\322A.https://www.googleapis.com/auth/cloud-platform",
+    create_key=_descriptor._internal_create_key,
     serialized_start=263,
     serialized_end=1048,
     methods=[
@@ -57,6 +59,7 @@ _CONTAINERANALYSIS = _descriptor.ServiceDescriptor(
             input_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._SETIAMPOLICYREQUEST,
             output_type=google_dot_iam_dot_v1_dot_policy__pb2._POLICY,
             serialized_options=b'\202\323\344\223\002n"./v1/{resource=projects/*/notes/*}:setIamPolicy:\001*Z9"4/v1/{resource=projects/*/occurrences/*}:setIamPolicy:\001*\332A\017resource,policy',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetIamPolicy",
@@ -66,6 +69,7 @@ _CONTAINERANALYSIS = _descriptor.ServiceDescriptor(
             input_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._GETIAMPOLICYREQUEST,
             output_type=google_dot_iam_dot_v1_dot_policy__pb2._POLICY,
             serialized_options=b'\202\323\344\223\002n"./v1/{resource=projects/*/notes/*}:getIamPolicy:\001*Z9"4/v1/{resource=projects/*/occurrences/*}:getIamPolicy:\001*\332A\010resource',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="TestIamPermissions",
@@ -75,6 +79,7 @@ _CONTAINERANALYSIS = _descriptor.ServiceDescriptor(
             input_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._TESTIAMPERMISSIONSREQUEST,
             output_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._TESTIAMPERMISSIONSRESPONSE,
             serialized_options=b'\202\323\344\223\002z"4/v1/{resource=projects/*/notes/*}:testIamPermissions:\001*Z?":/v1/{resource=projects/*/occurrences/*}:testIamPermissions:\001*\332A\024resource,permissions',
+            create_key=_descriptor._internal_create_key,
         ),
     ],
 )
