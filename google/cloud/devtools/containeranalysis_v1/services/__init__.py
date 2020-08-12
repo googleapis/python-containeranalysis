@@ -14,8 +14,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-from .services.container_analysis import ContainerAnalysisClient
-
-
-__all__ = ("ContainerAnalysisClient",)

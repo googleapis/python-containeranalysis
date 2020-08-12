@@ -217,6 +217,18 @@ class ContainerAnalysisClient(object):
 
         return grafeas_v1.GrafeasClient(grafeas_transport)
 
+    def get_grafeas_client(self):
+        """Returns an equivalent grafeas client.
+
+        Returns:
+            A :class:`~grafeas.grafeas_v1.GrafeasClient` instance.
+        """
+        grafeas_transport = grafeas_grpc_transport.GrafeasGrpcTransport(
+            self.SERVICE_ADDRESS, self.transport._OAUTH_SCOPES
+        )
+
+        return grafeas_v1.GrafeasClient(grafeas_transport)
+
     # Service calls
     def set_iam_policy(
         self,

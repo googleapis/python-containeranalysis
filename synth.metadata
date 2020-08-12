@@ -3,16 +3,16 @@
     {
       "git": {
         "name": ".",
-        "remote": "git@github.com:busunkim96/python-containeranalysis.git",
-        "sha": "d8ee9edbfa95d596d76d1de5770dc00e094c8fc7"
+        "remote": "https://github.com/googleapis/python-containeranalysis.git",
+        "sha": "4f3bcdd0effdc6224f9e4a5bd19fa3372a6cf2a5"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "fb84629a56703d04f0b5304c4a9ade7313ebd92d",
-        "internalRef": "325339219"
+        "sha": "00349824107aa97f391510510281acf33f728d93",
+        "internalRef": "326098601"
       }
     },
     {

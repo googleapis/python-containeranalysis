@@ -15,7 +15,5 @@
 # limitations under the License.
 #
 
-from .services.container_analysis import ContainerAnalysisClient
 
-
-__all__ = ("ContainerAnalysisClient",)
+__all__ = ()

@@ -15,7 +15,10 @@
 # limitations under the License.
 #
 
-from .services.container_analysis import ContainerAnalysisClient
+
+__protobuf__ = proto.module(
+    package="google.devtools.containeranalysis.v1", manifest={},
+)
 
 
-__all__ = ("ContainerAnalysisClient",)
+__all__ = tuple(sorted(__protobuf__.manifest))
