@@ -5,6 +5,7 @@ from google.cloud.devtools.containeranalysis_v1.services.container_analysis impo
     ContainerAnalysisClient,
 )
 
+
 def test_get_grafeas_client():
     client = ContainerAnalysisClient()
     client.get_grafeas_client()
