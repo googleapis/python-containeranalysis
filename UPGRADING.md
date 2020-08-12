@@ -105,7 +105,7 @@ response = client.test_iam_permissions(
 )
 ```
 
-This call is invalid because it mixes `request` with a keyword argument `filter`. Executing this code
+This call is invalid because it mixes `request` with a keyword argument `permissions`. Executing this code
 will result in an error.
 
 ```py
