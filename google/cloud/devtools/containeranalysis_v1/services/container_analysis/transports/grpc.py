@@ -18,6 +18,7 @@
 from typing import Callable, Dict, Optional, Sequence, Tuple
 
 from google.api_core import grpc_helpers  # type: ignore
+from google.api_core import gapic_v1  # type: ignore
 from google import auth  # type: ignore
 from google.auth import credentials  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
@@ -28,7 +29,7 @@ import grpc  # type: ignore
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
 from google.iam.v1 import policy_pb2 as policy  # type: ignore
 
-from .base import ContainerAnalysisTransport
+from .base import ContainerAnalysisTransport, DEFAULT_CLIENT_INFO
 
 
 class ContainerAnalysisGrpcTransport(ContainerAnalysisTransport):
@@ -70,7 +71,8 @@ class ContainerAnalysisGrpcTransport(ContainerAnalysisTransport):
         channel: grpc.Channel = None,
         api_mtls_endpoint: str = None,
         client_cert_source: Callable[[], Tuple[bytes, bytes]] = None,
-        quota_project_id: Optional[str] = None
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiate the transport.
 
@@ -99,6 +101,11 @@ class ContainerAnalysisGrpcTransport(ContainerAnalysisTransport):
                 is None.
             quota_project_id (Optional[str]): An optional project to use for billing
                 and quota.
+            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
+                The client info used to send a user-agent string along with	
+                API requests. If ``None``, then default info will be used.	
+                Generally, you only need to set this if you're developing	
+                your own client library.
 
         Raises:
           google.auth.exceptions.MutualTLSChannelError: If mutual TLS transport
@@ -154,6 +161,7 @@ class ContainerAnalysisGrpcTransport(ContainerAnalysisTransport):
             credentials_file=credentials_file,
             scopes=scopes or self.AUTH_SCOPES,
             quota_project_id=quota_project_id,
+            client_info=client_info,
         )
 
     @classmethod
@@ -164,7 +172,7 @@ class ContainerAnalysisGrpcTransport(ContainerAnalysisTransport):
         credentials_file: str = None,
         scopes: Optional[Sequence[str]] = None,
         quota_project_id: Optional[str] = None,
-        **kwargs
+        **kwargs,
     ) -> grpc.Channel:
         """Create and return a gRPC channel object.
         Args:
@@ -198,7 +206,7 @@ class ContainerAnalysisGrpcTransport(ContainerAnalysisTransport):
             credentials_file=credentials_file,
             scopes=scopes,
             quota_project_id=quota_project_id,
-            **kwargs
+            **kwargs,
         )
 
     @property
