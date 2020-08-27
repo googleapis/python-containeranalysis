@@ -3,8 +3,8 @@
     {
       "git": {
         "name": ".",
-        "remote": "git@github.com:googleapis/python-containeranalysis",
-        "sha": "1a93756ed78656cbbdadf164b3de3ab4a3ba6232"
+        "remote": "https://github.com/googleapis/python-containeranalysis.git",
+        "sha": "9d2f3a1d594f591812a59e9ec0fc5f838a12daa2"
       }
     },
     {
