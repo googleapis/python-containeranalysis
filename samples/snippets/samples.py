@@ -265,7 +265,7 @@ def create_occurrence_subscription(subscription_id, project_id):
 
     topic_id = 'container-analysis-occurrences-v1'
     client = SubscriberClient()
-    topic_name =  f"projects/{project_id}/topics/{topic_id}"
+    topic_name = f"projects/{project_id}/topics/{topic_id}"
     subscription_name = client.subscription_path(project_id, subscription_id)
     success = True
     try:
