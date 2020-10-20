@@ -67,7 +67,10 @@ def delete_note(note_id, project_id):
 def create_occurrence(resource_url, note_id, occurrence_project, note_project):
     """ Creates and returns a new occurrence of a previously
     created vulnerability note."""
-    # resource_url = 'https://gcr.io/my-project/my-image@sha256:123'
+    # If you are using Google Container Registry
+    # resource_url = 'https://gcr.io/my-project/my-repo/my-image@sha256:123'
+    # If you are using Google Artifact Registry
+    # resource_url = 'https://LOCATION-docker.pkg.dev/my-project/my-repo/my-image@sha256:123'
     # note_id = 'my-note'
     # occurrence_project = 'my-gcp-project'
     # note_project = 'my-gcp-project'
@@ -154,7 +157,10 @@ def get_discovery_info(resource_url, project_id):
     """Retrieves and prints the discovery occurrence created for a specified
     image. The discovery occurrence contains information about the initial
     scan on the image."""
-    # resource_url = 'https://gcr.io/my-project/my-image@sha256:123'
+    # If you are using Google Container Registry
+    # resource_url = 'https://gcr.io/my-project/my-repo/my-image@sha256:123'
+    # If you are using Google Artifact Registry
+    # resource_url = 'https://LOCATION-docker.pkg.dev/my-project/my-repo/my-image@sha256:123'
     # project_id = 'my-gcp-project'
 
     from google.cloud.devtools import containeranalysis_v1
@@ -197,7 +203,10 @@ def get_occurrences_for_note(note_id, project_id):
 def get_occurrences_for_image(resource_url, project_id):
     """Retrieves all the occurrences associated with a specified image.
     Here, all occurrences are simply printed and counted."""
-    # resource_url = 'https://gcr.io/my-project/my-image@sha256:123'
+    # If you are using Google Container Registry
+    # resource_url = 'https://gcr.io/my-project/my-repo/my-image@sha256:123'
+    # If you are using Google Artifact Registry
+    # resource_url = 'https://LOCATION-docker.pkg.dev/my-project/my-repo/my-image@sha256:123'
     # project_id = 'my-gcp-project'
 
     from google.cloud.devtools import containeranalysis_v1
@@ -283,7 +292,10 @@ def create_occurrence_subscription(subscription_id, project_id):
 def poll_discovery_finished(resource_url, timeout_seconds, project_id):
     """Returns the discovery occurrence for a resource once it reaches a
     terminal state."""
-    # resource_url = 'https://gcr.io/my-project/my-image@sha256:123'
+    # If you are using Google Container Registry
+    # resource_url = 'https://gcr.io/my-project/my-repo/my-image@sha256:123'
+    # If you are using Google Artifact Registry
+    # resource_url = 'https://LOCATION-docker.pkg.dev/my-project/my-repo/my-image@sha256:123'
     # timeout_seconds = 20
     # project_id = 'my-gcp-project'
 
@@ -333,7 +345,10 @@ def poll_discovery_finished(resource_url, timeout_seconds, project_id):
 # [START containeranalysis_vulnerability_occurrences_for_image]
 def find_vulnerabilities_for_image(resource_url, project_id):
     """"Retrieves all vulnerability occurrences associated with a resource."""
-    # resource_url = 'https://gcr.io/my-project/my-image@sha256:123'
+    # If you are using Google Container Registry
+    # resource_url = 'https://gcr.io/my-project/my-repo/my-image@sha256:123'
+    # If you are using Google Artifact Registry
+    # resource_url = 'https://LOCATION-docker.pkg.dev/my-project/my-repo/my-image@sha256:123'
     # project_id = 'my-gcp-project'
 
     from google.cloud.devtools import containeranalysis_v1
@@ -352,7 +367,10 @@ def find_vulnerabilities_for_image(resource_url, project_id):
 def find_high_severity_vulnerabilities_for_image(resource_url, project_id):
     """Retrieves a list of only high vulnerability occurrences associated
     with a resource."""
-    # resource_url = 'https://gcr.io/my-project/my-image@sha256:123'
+    # If you are using Google Container Registry
+    # resource_url = 'https://gcr.io/my-project/my-repo/my-image@sha256:123'
+    # If you are using Google Artifact Registry
+    # resource_url = 'https://LOCATION-docker.pkg.dev/my-project/my-repo/my-image@sha256:123'
     # project_id = 'my-gcp-project'
 
     from grafeas.grafeas_v1 import Severity
