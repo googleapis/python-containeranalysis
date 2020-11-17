@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "714c619b7d4007b850b81eb919c9ca7c5afc4867",
-        "internalRef": "334829155"
+        "sha": "7ab31c71fd81b85dc4b5a439fe654dbd6578c858",
+        "internalRef": "334847962"
       }
     },
     {
@@ -88,7 +88,6 @@
     "CONTRIBUTING.rst",
     "LICENSE",
     "MANIFEST.in",
-    "devtools-containeranalysis-v1-py.tar.gz",
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
     "docs/conf.py",
