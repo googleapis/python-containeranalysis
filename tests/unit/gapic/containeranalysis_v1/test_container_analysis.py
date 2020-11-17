@@ -41,6 +41,7 @@ from google.cloud.devtools.containeranalysis_v1.services.container_analysis impo
 from google.cloud.devtools.containeranalysis_v1.services.container_analysis import (
     transports,
 )
+from google.cloud.devtools.containeranalysis_v1.types import containeranalysis
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
 from google.iam.v1 import options_pb2 as options  # type: ignore
 from google.iam.v1 import policy_pb2 as policy  # type: ignore
@@ -1111,6 +1112,221 @@ async def test_test_iam_permissions_flattened_error_async():
         )
 
 
+def test_get_vulnerability_occurrences_summary(
+    transport: str = "grpc",
+    request_type=containeranalysis.GetVulnerabilityOccurrencesSummaryRequest,
+):
+    client = ContainerAnalysisClient(
+        credentials=credentials.AnonymousCredentials(), transport=transport,
+    )
+
+    # Everything is optional in proto3 as far as the runtime is concerned,
+    # and we are mocking out the actual API, so just send an empty request.
+    request = request_type()
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._transport.get_vulnerability_occurrences_summary), "__call__"
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
+
+        response = client.get_vulnerability_occurrences_summary(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == containeranalysis.GetVulnerabilityOccurrencesSummaryRequest()
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, containeranalysis.VulnerabilityOccurrencesSummary)
+
+
+def test_get_vulnerability_occurrences_summary_from_dict():
+    test_get_vulnerability_occurrences_summary(request_type=dict)
+
+
+@pytest.mark.asyncio
+async def test_get_vulnerability_occurrences_summary_async(
+    transport: str = "grpc_asyncio",
+):
+    client = ContainerAnalysisAsyncClient(
+        credentials=credentials.AnonymousCredentials(), transport=transport,
+    )
+
+    # Everything is optional in proto3 as far as the runtime is concerned,
+    # and we are mocking out the actual API, so just send an empty request.
+    request = containeranalysis.GetVulnerabilityOccurrencesSummaryRequest()
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._client._transport.get_vulnerability_occurrences_summary),
+        "__call__",
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            containeranalysis.VulnerabilityOccurrencesSummary()
+        )
+
+        response = await client.get_vulnerability_occurrences_summary(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == request
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, containeranalysis.VulnerabilityOccurrencesSummary)
+
+
+def test_get_vulnerability_occurrences_summary_field_headers():
+    client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = containeranalysis.GetVulnerabilityOccurrencesSummaryRequest()
+    request.parent = "parent/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._transport.get_vulnerability_occurrences_summary), "__call__"
+    ) as call:
+        call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
+
+        client.get_vulnerability_occurrences_summary(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "parent=parent/value",) in kw["metadata"]
+
+
+@pytest.mark.asyncio
+async def test_get_vulnerability_occurrences_summary_field_headers_async():
+    client = ContainerAnalysisAsyncClient(
+        credentials=credentials.AnonymousCredentials(),
+    )
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = containeranalysis.GetVulnerabilityOccurrencesSummaryRequest()
+    request.parent = "parent/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._client._transport.get_vulnerability_occurrences_summary),
+        "__call__",
+    ) as call:
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            containeranalysis.VulnerabilityOccurrencesSummary()
+        )
+
+        await client.get_vulnerability_occurrences_summary(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "parent=parent/value",) in kw["metadata"]
+
+
+def test_get_vulnerability_occurrences_summary_flattened():
+    client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._transport.get_vulnerability_occurrences_summary), "__call__"
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
+
+        # Call the method with a truthy value for each flattened field,
+        # using the keyword arguments to the method.
+        client.get_vulnerability_occurrences_summary(
+            parent="parent_value", filter="filter_value",
+        )
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0].parent == "parent_value"
+
+        assert args[0].filter == "filter_value"
+
+
+def test_get_vulnerability_occurrences_summary_flattened_error():
+    client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.get_vulnerability_occurrences_summary(
+            containeranalysis.GetVulnerabilityOccurrencesSummaryRequest(),
+            parent="parent_value",
+            filter="filter_value",
+        )
+
+
+@pytest.mark.asyncio
+async def test_get_vulnerability_occurrences_summary_flattened_async():
+    client = ContainerAnalysisAsyncClient(
+        credentials=credentials.AnonymousCredentials(),
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._client._transport.get_vulnerability_occurrences_summary),
+        "__call__",
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
+
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            containeranalysis.VulnerabilityOccurrencesSummary()
+        )
+        # Call the method with a truthy value for each flattened field,
+        # using the keyword arguments to the method.
+        response = await client.get_vulnerability_occurrences_summary(
+            parent="parent_value", filter="filter_value",
+        )
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0].parent == "parent_value"
+
+        assert args[0].filter == "filter_value"
+
+
+@pytest.mark.asyncio
+async def test_get_vulnerability_occurrences_summary_flattened_error_async():
+    client = ContainerAnalysisAsyncClient(
+        credentials=credentials.AnonymousCredentials(),
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        await client.get_vulnerability_occurrences_summary(
+            containeranalysis.GetVulnerabilityOccurrencesSummaryRequest(),
+            parent="parent_value",
+            filter="filter_value",
+        )
+
+
 def test_credentials_transport_error():
     # It is an error to provide credentials and a transport instance.
     transport = transports.ContainerAnalysisGrpcTransport(
@@ -1211,6 +1427,7 @@ def test_container_analysis_base_transport():
         "set_iam_policy",
         "get_iam_policy",
         "test_iam_permissions",
+        "get_vulnerability_occurrences_summary",
     )
     for method in methods:
         with pytest.raises(NotImplementedError):

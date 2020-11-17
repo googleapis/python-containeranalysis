@@ -25,6 +25,7 @@ from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
 from google.auth import credentials  # type: ignore
 
+from google.cloud.devtools.containeranalysis_v1.types import containeranalysis
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
 from google.iam.v1 import policy_pb2 as policy  # type: ignore
 
@@ -118,6 +119,11 @@ class ContainerAnalysisTransport(abc.ABC):
                 default_timeout=30.0,
                 client_info=client_info,
             ),
+            self.get_vulnerability_occurrences_summary: gapic_v1.method.wrap_method(
+                self.get_vulnerability_occurrences_summary,
+                default_timeout=None,
+                client_info=client_info,
+            ),
         }
 
     @property
@@ -146,6 +152,18 @@ class ContainerAnalysisTransport(abc.ABC):
         typing.Union[
             iam_policy.TestIamPermissionsResponse,
             typing.Awaitable[iam_policy.TestIamPermissionsResponse],
+        ],
+    ]:
+        raise NotImplementedError()
+
+    @property
+    def get_vulnerability_occurrences_summary(
+        self,
+    ) -> typing.Callable[
+        [containeranalysis.GetVulnerabilityOccurrencesSummaryRequest],
+        typing.Union[
+            containeranalysis.VulnerabilityOccurrencesSummary,
+            typing.Awaitable[containeranalysis.VulnerabilityOccurrencesSummary],
         ],
     ]:
         raise NotImplementedError()

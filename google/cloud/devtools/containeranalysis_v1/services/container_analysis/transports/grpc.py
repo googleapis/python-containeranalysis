@@ -26,6 +26,7 @@ from google.auth.transport.grpc import SslCredentials  # type: ignore
 
 import grpc  # type: ignore
 
+from google.cloud.devtools.containeranalysis_v1.types import containeranalysis
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
 from google.iam.v1 import policy_pb2 as policy  # type: ignore
 
@@ -346,6 +347,39 @@ class ContainerAnalysisGrpcTransport(ContainerAnalysisTransport):
                 response_deserializer=iam_policy.TestIamPermissionsResponse.FromString,
             )
         return self._stubs["test_iam_permissions"]
+
+    @property
+    def get_vulnerability_occurrences_summary(
+        self,
+    ) -> Callable[
+        [containeranalysis.GetVulnerabilityOccurrencesSummaryRequest],
+        containeranalysis.VulnerabilityOccurrencesSummary,
+    ]:
+        r"""Return a callable for the get vulnerability occurrences
+        summary method over gRPC.
+
+        Gets a summary of the number and severity of
+        occurrences.
+
+        Returns:
+            Callable[[~.GetVulnerabilityOccurrencesSummaryRequest],
+                    ~.VulnerabilityOccurrencesSummary]:
+                A function that, when called, will call the underlying RPC
+                on the server.
+        """
+        # Generate a "stub function" on-the-fly which will actually make
+        # the request.
+        # gRPC handles serialization and deserialization, so we just need
+        # to pass in the functions for each.
+        if "get_vulnerability_occurrences_summary" not in self._stubs:
+            self._stubs[
+                "get_vulnerability_occurrences_summary"
+            ] = self.grpc_channel.unary_unary(
+                "/google.devtools.containeranalysis.v1.ContainerAnalysis/GetVulnerabilityOccurrencesSummary",
+                request_serializer=containeranalysis.GetVulnerabilityOccurrencesSummaryRequest.serialize,
+                response_deserializer=containeranalysis.VulnerabilityOccurrencesSummary.deserialize,
+            )
+        return self._stubs["get_vulnerability_occurrences_summary"]
 
 
 __all__ = ("ContainerAnalysisGrpcTransport",)
