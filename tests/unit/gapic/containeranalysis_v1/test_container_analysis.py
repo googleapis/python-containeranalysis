@@ -104,12 +104,12 @@ def test_container_analysis_client_from_service_account_file(client_class):
     ) as factory:
         factory.return_value = creds
         client = client_class.from_service_account_file("dummy/file/path.json")
-        assert client._transport._credentials == creds
+        assert client.transport._credentials == creds
 
         client = client_class.from_service_account_json("dummy/file/path.json")
-        assert client._transport._credentials == creds
+        assert client.transport._credentials == creds
 
-        assert client._transport._host == "containeranalysis.googleapis.com:443"
+        assert client.transport._host == "containeranalysis.googleapis.com:443"
 
 
 def test_container_analysis_client_get_transport_class():
@@ -469,7 +469,7 @@ def test_set_iam_policy(
     request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.set_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.set_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy(version=774, etag=b"etag_blob",)
 
@@ -482,6 +482,7 @@ def test_set_iam_policy(
         assert args[0] == iam_policy.SetIamPolicyRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, policy.Policy)
 
     assert response.version == 774
@@ -494,19 +495,19 @@ def test_set_iam_policy_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_set_iam_policy_async(transport: str = "grpc_asyncio"):
+async def test_set_iam_policy_async(
+    transport: str = "grpc_asyncio", request_type=iam_policy.SetIamPolicyRequest
+):
     client = ContainerAnalysisAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = iam_policy.SetIamPolicyRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client._client._transport.set_iam_policy), "__call__"
-    ) as call:
+    with mock.patch.object(type(client.transport.set_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             policy.Policy(version=774, etag=b"etag_blob",)
@@ -518,7 +519,7 @@ async def test_set_iam_policy_async(transport: str = "grpc_asyncio"):
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == iam_policy.SetIamPolicyRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, policy.Policy)
@@ -526,6 +527,11 @@ async def test_set_iam_policy_async(transport: str = "grpc_asyncio"):
     assert response.version == 774
 
     assert response.etag == b"etag_blob"
+
+
+@pytest.mark.asyncio
+async def test_set_iam_policy_async_from_dict():
+    await test_set_iam_policy_async(request_type=dict)
 
 
 def test_set_iam_policy_field_headers():
@@ -537,7 +543,7 @@ def test_set_iam_policy_field_headers():
     request.resource = "resource/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.set_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.set_iam_policy), "__call__") as call:
         call.return_value = policy.Policy()
 
         client.set_iam_policy(request)
@@ -564,9 +570,7 @@ async def test_set_iam_policy_field_headers_async():
     request.resource = "resource/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client._client._transport.set_iam_policy), "__call__"
-    ) as call:
+    with mock.patch.object(type(client.transport.set_iam_policy), "__call__") as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(policy.Policy())
 
         await client.set_iam_policy(request)
@@ -581,10 +585,10 @@ async def test_set_iam_policy_field_headers_async():
     assert ("x-goog-request-params", "resource=resource/value",) in kw["metadata"]
 
 
-def test_set_iam_policy_from_dict():
+def test_set_iam_policy_from_dict_foreign():
     client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.set_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.set_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy()
 
@@ -601,7 +605,7 @@ def test_set_iam_policy_flattened():
     client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.set_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.set_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy()
 
@@ -635,9 +639,7 @@ async def test_set_iam_policy_flattened_async():
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client._client._transport.set_iam_policy), "__call__"
-    ) as call:
+    with mock.patch.object(type(client.transport.set_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy()
 
@@ -680,7 +682,7 @@ def test_get_iam_policy(
     request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.get_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.get_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy(version=774, etag=b"etag_blob",)
 
@@ -693,6 +695,7 @@ def test_get_iam_policy(
         assert args[0] == iam_policy.GetIamPolicyRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, policy.Policy)
 
     assert response.version == 774
@@ -705,19 +708,19 @@ def test_get_iam_policy_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_get_iam_policy_async(transport: str = "grpc_asyncio"):
+async def test_get_iam_policy_async(
+    transport: str = "grpc_asyncio", request_type=iam_policy.GetIamPolicyRequest
+):
     client = ContainerAnalysisAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = iam_policy.GetIamPolicyRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client._client._transport.get_iam_policy), "__call__"
-    ) as call:
+    with mock.patch.object(type(client.transport.get_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             policy.Policy(version=774, etag=b"etag_blob",)
@@ -729,7 +732,7 @@ async def test_get_iam_policy_async(transport: str = "grpc_asyncio"):
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == iam_policy.GetIamPolicyRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, policy.Policy)
@@ -737,6 +740,11 @@ async def test_get_iam_policy_async(transport: str = "grpc_asyncio"):
     assert response.version == 774
 
     assert response.etag == b"etag_blob"
+
+
+@pytest.mark.asyncio
+async def test_get_iam_policy_async_from_dict():
+    await test_get_iam_policy_async(request_type=dict)
 
 
 def test_get_iam_policy_field_headers():
@@ -748,7 +756,7 @@ def test_get_iam_policy_field_headers():
     request.resource = "resource/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.get_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.get_iam_policy), "__call__") as call:
         call.return_value = policy.Policy()
 
         client.get_iam_policy(request)
@@ -775,9 +783,7 @@ async def test_get_iam_policy_field_headers_async():
     request.resource = "resource/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client._client._transport.get_iam_policy), "__call__"
-    ) as call:
+    with mock.patch.object(type(client.transport.get_iam_policy), "__call__") as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(policy.Policy())
 
         await client.get_iam_policy(request)
@@ -792,10 +798,10 @@ async def test_get_iam_policy_field_headers_async():
     assert ("x-goog-request-params", "resource=resource/value",) in kw["metadata"]
 
 
-def test_get_iam_policy_from_dict():
+def test_get_iam_policy_from_dict_foreign():
     client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.get_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.get_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy()
 
@@ -812,7 +818,7 @@ def test_get_iam_policy_flattened():
     client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client._transport.get_iam_policy), "__call__") as call:
+    with mock.patch.object(type(client.transport.get_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy()
 
@@ -846,9 +852,7 @@ async def test_get_iam_policy_flattened_async():
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client._client._transport.get_iam_policy), "__call__"
-    ) as call:
+    with mock.patch.object(type(client.transport.get_iam_policy), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = policy.Policy()
 
@@ -892,7 +896,7 @@ def test_test_iam_permissions(
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._transport.test_iam_permissions), "__call__"
+        type(client.transport.test_iam_permissions), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = iam_policy.TestIamPermissionsResponse(
@@ -908,6 +912,7 @@ def test_test_iam_permissions(
         assert args[0] == iam_policy.TestIamPermissionsRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, iam_policy.TestIamPermissionsResponse)
 
     assert response.permissions == ["permissions_value"]
@@ -918,18 +923,20 @@ def test_test_iam_permissions_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_test_iam_permissions_async(transport: str = "grpc_asyncio"):
+async def test_test_iam_permissions_async(
+    transport: str = "grpc_asyncio", request_type=iam_policy.TestIamPermissionsRequest
+):
     client = ContainerAnalysisAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = iam_policy.TestIamPermissionsRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._client._transport.test_iam_permissions), "__call__"
+        type(client.transport.test_iam_permissions), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
@@ -942,12 +949,17 @@ async def test_test_iam_permissions_async(transport: str = "grpc_asyncio"):
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == iam_policy.TestIamPermissionsRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, iam_policy.TestIamPermissionsResponse)
 
     assert response.permissions == ["permissions_value"]
+
+
+@pytest.mark.asyncio
+async def test_test_iam_permissions_async_from_dict():
+    await test_test_iam_permissions_async(request_type=dict)
 
 
 def test_test_iam_permissions_field_headers():
@@ -960,7 +972,7 @@ def test_test_iam_permissions_field_headers():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._transport.test_iam_permissions), "__call__"
+        type(client.transport.test_iam_permissions), "__call__"
     ) as call:
         call.return_value = iam_policy.TestIamPermissionsResponse()
 
@@ -989,7 +1001,7 @@ async def test_test_iam_permissions_field_headers_async():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._client._transport.test_iam_permissions), "__call__"
+        type(client.transport.test_iam_permissions), "__call__"
     ) as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             iam_policy.TestIamPermissionsResponse()
@@ -1007,11 +1019,11 @@ async def test_test_iam_permissions_field_headers_async():
     assert ("x-goog-request-params", "resource=resource/value",) in kw["metadata"]
 
 
-def test_test_iam_permissions_from_dict():
+def test_test_iam_permissions_from_dict_foreign():
     client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._transport.test_iam_permissions), "__call__"
+        type(client.transport.test_iam_permissions), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = iam_policy.TestIamPermissionsResponse()
@@ -1030,7 +1042,7 @@ def test_test_iam_permissions_flattened():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._transport.test_iam_permissions), "__call__"
+        type(client.transport.test_iam_permissions), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = iam_policy.TestIamPermissionsResponse()
@@ -1072,7 +1084,7 @@ async def test_test_iam_permissions_flattened_async():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._client._transport.test_iam_permissions), "__call__"
+        type(client.transport.test_iam_permissions), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = iam_policy.TestIamPermissionsResponse()
@@ -1126,7 +1138,7 @@ def test_get_vulnerability_occurrences_summary(
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._transport.get_vulnerability_occurrences_summary), "__call__"
+        type(client.transport.get_vulnerability_occurrences_summary), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
@@ -1140,6 +1152,7 @@ def test_get_vulnerability_occurrences_summary(
         assert args[0] == containeranalysis.GetVulnerabilityOccurrencesSummaryRequest()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, containeranalysis.VulnerabilityOccurrencesSummary)
 
 
@@ -1150,6 +1163,7 @@ def test_get_vulnerability_occurrences_summary_from_dict():
 @pytest.mark.asyncio
 async def test_get_vulnerability_occurrences_summary_async(
     transport: str = "grpc_asyncio",
+    request_type=containeranalysis.GetVulnerabilityOccurrencesSummaryRequest,
 ):
     client = ContainerAnalysisAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
@@ -1157,12 +1171,11 @@ async def test_get_vulnerability_occurrences_summary_async(
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = containeranalysis.GetVulnerabilityOccurrencesSummaryRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._client._transport.get_vulnerability_occurrences_summary),
-        "__call__",
+        type(client.transport.get_vulnerability_occurrences_summary), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
@@ -1175,10 +1188,15 @@ async def test_get_vulnerability_occurrences_summary_async(
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == containeranalysis.GetVulnerabilityOccurrencesSummaryRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, containeranalysis.VulnerabilityOccurrencesSummary)
+
+
+@pytest.mark.asyncio
+async def test_get_vulnerability_occurrences_summary_async_from_dict():
+    await test_get_vulnerability_occurrences_summary_async(request_type=dict)
 
 
 def test_get_vulnerability_occurrences_summary_field_headers():
@@ -1191,7 +1209,7 @@ def test_get_vulnerability_occurrences_summary_field_headers():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._transport.get_vulnerability_occurrences_summary), "__call__"
+        type(client.transport.get_vulnerability_occurrences_summary), "__call__"
     ) as call:
         call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
 
@@ -1220,8 +1238,7 @@ async def test_get_vulnerability_occurrences_summary_field_headers_async():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._client._transport.get_vulnerability_occurrences_summary),
-        "__call__",
+        type(client.transport.get_vulnerability_occurrences_summary), "__call__"
     ) as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             containeranalysis.VulnerabilityOccurrencesSummary()
@@ -1244,7 +1261,7 @@ def test_get_vulnerability_occurrences_summary_flattened():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._transport.get_vulnerability_occurrences_summary), "__call__"
+        type(client.transport.get_vulnerability_occurrences_summary), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
@@ -1286,8 +1303,7 @@ async def test_get_vulnerability_occurrences_summary_flattened_async():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client._client._transport.get_vulnerability_occurrences_summary),
-        "__call__",
+        type(client.transport.get_vulnerability_occurrences_summary), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = containeranalysis.VulnerabilityOccurrencesSummary()
@@ -1363,7 +1379,7 @@ def test_transport_instance():
         credentials=credentials.AnonymousCredentials(),
     )
     client = ContainerAnalysisClient(transport=transport)
-    assert client._transport is transport
+    assert client.transport is transport
 
 
 def test_transport_get_channel():
@@ -1399,7 +1415,7 @@ def test_transport_adc(transport_class):
 def test_transport_grpc_default():
     # A client should use the gRPC transport by default.
     client = ContainerAnalysisClient(credentials=credentials.AnonymousCredentials(),)
-    assert isinstance(client._transport, transports.ContainerAnalysisGrpcTransport,)
+    assert isinstance(client.transport, transports.ContainerAnalysisGrpcTransport,)
 
 
 def test_container_analysis_base_transport_error():
@@ -1496,7 +1512,7 @@ def test_container_analysis_host_no_port():
             api_endpoint="containeranalysis.googleapis.com"
         ),
     )
-    assert client._transport._host == "containeranalysis.googleapis.com:443"
+    assert client.transport._host == "containeranalysis.googleapis.com:443"
 
 
 def test_container_analysis_host_with_port():
@@ -1506,7 +1522,7 @@ def test_container_analysis_host_with_port():
             api_endpoint="containeranalysis.googleapis.com:8000"
         ),
     )
-    assert client._transport._host == "containeranalysis.googleapis.com:8000"
+    assert client.transport._host == "containeranalysis.googleapis.com:8000"
 
 
 def test_container_analysis_grpc_transport_channel():
@@ -1518,6 +1534,7 @@ def test_container_analysis_grpc_transport_channel():
     )
     assert transport.grpc_channel == channel
     assert transport._host == "squid.clam.whelk:443"
+    assert transport._ssl_channel_credentials == None
 
 
 def test_container_analysis_grpc_asyncio_transport_channel():
@@ -1529,6 +1546,7 @@ def test_container_analysis_grpc_asyncio_transport_channel():
     )
     assert transport.grpc_channel == channel
     assert transport._host == "squid.clam.whelk:443"
+    assert transport._ssl_channel_credentials == None
 
 
 @pytest.mark.parametrize(
@@ -1576,6 +1594,7 @@ def test_container_analysis_transport_channel_mtls_with_client_cert_source(
                 quota_project_id=None,
             )
             assert transport.grpc_channel == mock_grpc_channel
+            assert transport._ssl_channel_credentials == mock_ssl_cred
 
 
 @pytest.mark.parametrize(
@@ -1616,6 +1635,107 @@ def test_container_analysis_transport_channel_mtls_with_adc(transport_class):
                 quota_project_id=None,
             )
             assert transport.grpc_channel == mock_grpc_channel
+
+
+def test_common_billing_account_path():
+    billing_account = "squid"
+
+    expected = "billingAccounts/{billing_account}".format(
+        billing_account=billing_account,
+    )
+    actual = ContainerAnalysisClient.common_billing_account_path(billing_account)
+    assert expected == actual
+
+
+def test_parse_common_billing_account_path():
+    expected = {
+        "billing_account": "clam",
+    }
+    path = ContainerAnalysisClient.common_billing_account_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = ContainerAnalysisClient.parse_common_billing_account_path(path)
+    assert expected == actual
+
+
+def test_common_folder_path():
+    folder = "whelk"
+
+    expected = "folders/{folder}".format(folder=folder,)
+    actual = ContainerAnalysisClient.common_folder_path(folder)
+    assert expected == actual
+
+
+def test_parse_common_folder_path():
+    expected = {
+        "folder": "octopus",
+    }
+    path = ContainerAnalysisClient.common_folder_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = ContainerAnalysisClient.parse_common_folder_path(path)
+    assert expected == actual
+
+
+def test_common_organization_path():
+    organization = "oyster"
+
+    expected = "organizations/{organization}".format(organization=organization,)
+    actual = ContainerAnalysisClient.common_organization_path(organization)
+    assert expected == actual
+
+
+def test_parse_common_organization_path():
+    expected = {
+        "organization": "nudibranch",
+    }
+    path = ContainerAnalysisClient.common_organization_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = ContainerAnalysisClient.parse_common_organization_path(path)
+    assert expected == actual
+
+
+def test_common_project_path():
+    project = "cuttlefish"
+
+    expected = "projects/{project}".format(project=project,)
+    actual = ContainerAnalysisClient.common_project_path(project)
+    assert expected == actual
+
+
+def test_parse_common_project_path():
+    expected = {
+        "project": "mussel",
+    }
+    path = ContainerAnalysisClient.common_project_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = ContainerAnalysisClient.parse_common_project_path(path)
+    assert expected == actual
+
+
+def test_common_location_path():
+    project = "winkle"
+    location = "nautilus"
+
+    expected = "projects/{project}/locations/{location}".format(
+        project=project, location=location,
+    )
+    actual = ContainerAnalysisClient.common_location_path(project, location)
+    assert expected == actual
+
+
+def test_parse_common_location_path():
+    expected = {
+        "project": "scallop",
+        "location": "abalone",
+    }
+    path = ContainerAnalysisClient.common_location_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = ContainerAnalysisClient.parse_common_location_path(path)
+    assert expected == actual
 
 
 def test_client_withDEFAULT_CLIENT_INFO():
