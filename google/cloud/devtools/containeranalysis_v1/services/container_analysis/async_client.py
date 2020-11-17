@@ -31,7 +31,7 @@ from google.oauth2 import service_account  # type: ignore
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
 from google.iam.v1 import policy_pb2 as policy  # type: ignore
 
-from .transports.base import ContainerAnalysisTransport
+from .transports.base import ContainerAnalysisTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import ContainerAnalysisGrpcAsyncIOTransport
 from .client import ContainerAnalysisClient
 
@@ -76,6 +76,7 @@ class ContainerAnalysisAsyncClient:
         credentials: credentials.Credentials = None,
         transport: Union[str, ContainerAnalysisTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiate the container analysis client.
 
@@ -108,7 +109,10 @@ class ContainerAnalysisAsyncClient:
         """
 
         self._client = ContainerAnalysisClient(
-            credentials=credentials, transport=transport, client_options=client_options,
+            credentials=credentials,
+            transport=transport,
+            client_options=client_options,
+            client_info=client_info,
         )
 
     def get_grafeas_client(self) -> grafeas_v1.GrafeasClient:
@@ -255,7 +259,7 @@ class ContainerAnalysisAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.set_iam_policy,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -405,7 +409,7 @@ class ContainerAnalysisAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.get_iam_policy,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -501,7 +505,7 @@ class ContainerAnalysisAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.test_iam_permissions,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -518,13 +522,13 @@ class ContainerAnalysisAsyncClient:
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution(
             "google-cloud-containeranalysis",
         ).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("ContainerAnalysisAsyncClient",)
