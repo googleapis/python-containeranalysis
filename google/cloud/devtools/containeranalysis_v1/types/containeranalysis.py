@@ -18,7 +18,7 @@
 import proto  # type: ignore
 
 
-from grafeas.v1 import vulnerability_pb2 as vulnerability  # type: ignore
+from grafeas_v1 import vulnerability_pb2 as vulnerability  # type: ignore
 
 
 __protobuf__ = proto.module(
