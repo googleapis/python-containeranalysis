@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-containeranalysis.git",
-        "sha": "0c81a4f2e13d0b38ac9d44ac17b86fbefea3c713"
+        "sha": "48c62ed2739ecee8acc4b9244e56be293c08e481"
       }
     },
     {
