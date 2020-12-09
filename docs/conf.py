@@ -347,7 +347,7 @@ texinfo_documents = [
 intersphinx_mapping = {
     "python": ("https://python.readthedocs.org/en/latest/", None),
     "google-auth": (
-        "https://googleapis.dev/python/google-auth/latest/index.html",
+        "https://googleapis.dev/python/google-auth/latest/",
         None,
     ),
     "google.api_core": ("https://googleapis.dev/python/google-api-core/latest/", None,),
