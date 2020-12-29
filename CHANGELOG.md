@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.1](https://www.github.com/googleapis/python-containeranalysis/compare/v2.1.0...v2.1.1) (2020-12-29)
+
+
+### Bug Fixes
+
+* remove client recv msg limit and add enums to `types/__init__.py` ([#68](https://www.github.com/googleapis/python-containeranalysis/issues/68)) ([77d47d3](https://www.github.com/googleapis/python-containeranalysis/commit/77d47d3efaceb30ed5952935a056229a960dc964))
+
 ## [2.1.0](https://www.github.com/googleapis/python-containeranalysis/compare/v2.0.0...v2.1.0) (2020-11-18)
 
 
