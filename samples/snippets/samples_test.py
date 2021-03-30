@@ -196,7 +196,7 @@ class TestContainerAnalysisSamples:
         else:
             # we expect timeout error
             assert False
-    
+
     @pytest.mark.flaky(max_runs=3, min_passes=1)
     def test_poll_discovery_occurrence(self):
         # create discovery occurrence
