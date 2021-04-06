@@ -41,9 +41,9 @@ def partition(
 class containeranalysisCallTransformer(cst.CSTTransformer):
     CTRL_PARAMS: Tuple[str] = ('retry', 'timeout', 'metadata')
     METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {
-    'get_iam_policy': ('resource', 'options', ),
+    'get_iam_policy': ('resource', 'options_', ),
     'get_vulnerability_occurrences_summary': ('parent', 'filter', ),
-    'set_iam_policy': ('resource', 'policy', ),
+    'set_iam_policy': ('resource', 'policy_', ),
     'test_iam_permissions': ('resource', 'permissions', ),
 
     }

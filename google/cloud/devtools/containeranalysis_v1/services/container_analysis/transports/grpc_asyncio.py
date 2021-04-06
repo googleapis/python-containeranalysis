@@ -29,7 +29,7 @@ from grpc.experimental import aio  # type: ignore
 
 from google.cloud.devtools.containeranalysis_v1.types import containeranalysis
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
-from google.iam.v1 import policy_pb2 as policy  # type: ignore
+from google.iam.v1 import policy_pb2 as gi_policy  # type: ignore
 
 from .base import ContainerAnalysisTransport, DEFAULT_CLIENT_INFO
 from .grpc import ContainerAnalysisGrpcTransport
@@ -244,7 +244,7 @@ class ContainerAnalysisGrpcAsyncIOTransport(ContainerAnalysisTransport):
     @property
     def set_iam_policy(
         self,
-    ) -> Callable[[iam_policy.SetIamPolicyRequest], Awaitable[policy.Policy]]:
+    ) -> Callable[[iam_policy.SetIamPolicyRequest], Awaitable[gi_policy.Policy]]:
         r"""Return a callable for the set iam policy method over gRPC.
 
         Sets the access control policy on the specified note or
@@ -271,14 +271,14 @@ class ContainerAnalysisGrpcAsyncIOTransport(ContainerAnalysisTransport):
             self._stubs["set_iam_policy"] = self.grpc_channel.unary_unary(
                 "/google.devtools.containeranalysis.v1.ContainerAnalysis/SetIamPolicy",
                 request_serializer=iam_policy.SetIamPolicyRequest.SerializeToString,
-                response_deserializer=policy.Policy.FromString,
+                response_deserializer=gi_policy.Policy.FromString,
             )
         return self._stubs["set_iam_policy"]
 
     @property
     def get_iam_policy(
         self,
-    ) -> Callable[[iam_policy.GetIamPolicyRequest], Awaitable[policy.Policy]]:
+    ) -> Callable[[iam_policy.GetIamPolicyRequest], Awaitable[gi_policy.Policy]]:
         r"""Return a callable for the get iam policy method over gRPC.
 
         Gets the access control policy for a note or an occurrence
@@ -305,7 +305,7 @@ class ContainerAnalysisGrpcAsyncIOTransport(ContainerAnalysisTransport):
             self._stubs["get_iam_policy"] = self.grpc_channel.unary_unary(
                 "/google.devtools.containeranalysis.v1.ContainerAnalysis/GetIamPolicy",
                 request_serializer=iam_policy.GetIamPolicyRequest.SerializeToString,
-                response_deserializer=policy.Policy.FromString,
+                response_deserializer=gi_policy.Policy.FromString,
             )
         return self._stubs["get_iam_policy"]
 

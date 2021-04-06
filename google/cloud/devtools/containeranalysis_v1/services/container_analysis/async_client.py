@@ -30,7 +30,7 @@ from google.oauth2 import service_account  # type: ignore
 
 from google.cloud.devtools.containeranalysis_v1.types import containeranalysis
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
-from google.iam.v1 import policy_pb2 as policy  # type: ignore
+from google.iam.v1 import policy_pb2 as gi_policy  # type: ignore
 
 from .transports.base import ContainerAnalysisTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import ContainerAnalysisGrpcAsyncIOTransport
@@ -203,7 +203,7 @@ class ContainerAnalysisAsyncClient:
         retry: retries.Retry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
-    ) -> policy.Policy:
+    ) -> gi_policy.Policy:
         r"""Sets the access control policy on the specified note or
         occurrence. Requires ``containeranalysis.notes.setIamPolicy`` or
         ``containeranalysis.occurrences.setIamPolicy`` permission if the
@@ -339,7 +339,7 @@ class ContainerAnalysisAsyncClient:
         retry: retries.Retry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
-    ) -> policy.Policy:
+    ) -> gi_policy.Policy:
         r"""Gets the access control policy for a note or an occurrence
         resource. Requires ``containeranalysis.notes.setIamPolicy`` or
         ``containeranalysis.occurrences.setIamPolicy`` permission if the
