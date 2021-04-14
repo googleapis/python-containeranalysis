@@ -53,7 +53,7 @@ if "google.cloud.devtools" in packages:
 
 setuptools.setup(
     name=name,
-    version=version,
+    version=setuptools.sic(version),
     description=description,
     long_description=readme,
     author="Google LLC",
