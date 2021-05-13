@@ -13,16 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-from .services.container_analysis import ContainerAnalysisClient
-from .services.container_analysis import ContainerAnalysisAsyncClient
-
-from .types.containeranalysis import GetVulnerabilityOccurrencesSummaryRequest
-from .types.containeranalysis import VulnerabilityOccurrencesSummary
-
-__all__ = (
-    'ContainerAnalysisAsyncClient',
-'ContainerAnalysisClient',
-'GetVulnerabilityOccurrencesSummaryRequest',
-'VulnerabilityOccurrencesSummary',
-)

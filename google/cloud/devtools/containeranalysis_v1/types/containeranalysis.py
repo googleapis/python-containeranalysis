@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import proto  # type: ignore
 
-
-from grafeas.grafeas_v1.types import vulnerability  # type: ignore
+from grafeas.v1 import vulnerability_pb2  # type: ignore
 
 
 __protobuf__ = proto.module(
@@ -42,9 +39,8 @@ class GetVulnerabilityOccurrencesSummaryRequest(proto.Message):
             The filter expression.
     """
 
-    parent = proto.Field(proto.STRING, number=1)
-
-    filter = proto.Field(proto.STRING, number=2)
+    parent = proto.Field(proto.STRING, number=1,)
+    filter = proto.Field(proto.STRING, number=2,)
 
 
 class VulnerabilityOccurrencesSummary(proto.Message):
@@ -75,13 +71,10 @@ class VulnerabilityOccurrencesSummary(proto.Message):
                 associated with this resource.
         """
 
-        resource_uri = proto.Field(proto.STRING, number=1)
-
-        severity = proto.Field(proto.ENUM, number=2, enum=vulnerability.Severity,)
-
-        fixable_count = proto.Field(proto.INT64, number=3)
-
-        total_count = proto.Field(proto.INT64, number=4)
+        resource_uri = proto.Field(proto.STRING, number=1,)
+        severity = proto.Field(proto.ENUM, number=2, enum=vulnerability_pb2.Severity,)
+        fixable_count = proto.Field(proto.INT64, number=3,)
+        total_count = proto.Field(proto.INT64, number=4,)
 
     counts = proto.RepeatedField(proto.MESSAGE, number=1, message=FixableTotalByDigest,)
 
