@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.3.1](https://www.github.com/googleapis/python-containeranalysis/compare/v2.3.0...v2.3.1) (2021-06-22)
+
+
+### Documentation
+
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-containeranalysis/issues/1127)) ([#141](https://www.github.com/googleapis/python-containeranalysis/issues/141)) ([a588841](https://www.github.com/googleapis/python-containeranalysis/commit/a58884154f23caf453040ad314c0a2d4416952f2))
+
 ## [2.3.0](https://www.github.com/googleapis/python-containeranalysis/compare/v2.2.3...v2.3.0) (2021-05-25)
 
 
