@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.4.1](https://www.github.com/googleapis/python-containeranalysis/compare/v2.4.0...v2.4.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#156](https://www.github.com/googleapis/python-containeranalysis/issues/156)) ([e1ff96f](https://www.github.com/googleapis/python-containeranalysis/commit/e1ff96faa545e22358b5a0d62e005ca9dfac0105))
+
 ## [2.4.0](https://www.github.com/googleapis/python-containeranalysis/compare/v2.3.0...v2.4.0) (2021-06-30)
 
 
