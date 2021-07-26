@@ -3,15 +3,15 @@
 ### [2.4.1](https://www.github.com/googleapis/python-containeranalysis/compare/v2.4.0...v2.4.1) (2021-07-26)
 
 
-### Features
-
-* add Samples section to CONTRIBUTING.rst ([#157](https://www.github.com/googleapis/python-containeranalysis/issues/157)) ([16f4eff](https://www.github.com/googleapis/python-containeranalysis/commit/16f4eff9cdf2e5122d623eb05c1e155062822f12))
-
-
 ### Bug Fixes
 
 * **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#156](https://www.github.com/googleapis/python-containeranalysis/issues/156)) ([e1ff96f](https://www.github.com/googleapis/python-containeranalysis/commit/e1ff96faa545e22358b5a0d62e005ca9dfac0105))
 * enable self signed jwt for grpc ([#162](https://www.github.com/googleapis/python-containeranalysis/issues/162)) ([071eac6](https://www.github.com/googleapis/python-containeranalysis/commit/071eac6c5c0e6b0f48b75db3f2257f174dd7cbe4))
+
+
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#157](https://www.github.com/googleapis/python-containeranalysis/issues/157)) ([16f4eff](https://www.github.com/googleapis/python-containeranalysis/commit/16f4eff9cdf2e5122d623eb05c1e155062822f12))
 
 
 ### Miscellaneous Chores
