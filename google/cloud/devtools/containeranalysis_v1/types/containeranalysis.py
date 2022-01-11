@@ -15,7 +15,7 @@
 #
 import proto  # type: ignore
 
-from grafeas.v1 import severity_pb2  # type: ignore
+from grafeas.grafeas_v1.types import severity  # type: ignore
 
 
 __protobuf__ = proto.module(
@@ -60,7 +60,7 @@ class VulnerabilityOccurrencesSummary(proto.Message):
         Attributes:
             resource_uri (str):
                 The affected resource.
-            severity (grafeas.v1.severity_pb2.Severity):
+            severity (grafeas.v1.severity.Severity):
                 The severity for this count. SEVERITY_UNSPECIFIED indicates
                 total across all severities.
             fixable_count (int):
@@ -72,7 +72,7 @@ class VulnerabilityOccurrencesSummary(proto.Message):
         """
 
         resource_uri = proto.Field(proto.STRING, number=1,)
-        severity = proto.Field(proto.ENUM, number=2, enum=severity_pb2.Severity,)
+        severity = proto.Field(proto.ENUM, number=2, enum=severity.Severity,)
         fixable_count = proto.Field(proto.INT64, number=3,)
         total_count = proto.Field(proto.INT64, number=4,)
 
