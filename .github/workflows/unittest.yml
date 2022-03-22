@@ -54,5 +54,5 @@ jobs:
     - name: Report coverage results
       run: |
         coverage combine .coverage-results/.coverage*
-        coverage report --show-missing --fail-under=48
+        coverage report --show-missing --fail-under=45
 
