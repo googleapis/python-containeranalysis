@@ -40,14 +40,12 @@ def lint(session):
     """
     session.install("flake8", BLACK_VERSION)
     session.run(
-        "black",
-        "--check",
-        *BLACK_PATHS,
+        "black", "--check", *BLACK_PATHS,
     )
     session.run("flake8", "google", "tests")
 
 
-@nox.session(python="3.6")
+@nox.session(python=DEFAULT_PYTHON_VERSION)
 def blacken(session):
     """Run black.
 
@@ -59,8 +57,7 @@ def blacken(session):
     """
     session.install(BLACK_VERSION)
     session.run(
-        "black",
-        *BLACK_PATHS,
+        "black", *BLACK_PATHS,
     )
 
 
@@ -123,9 +120,7 @@ def system(session):
     # Install all test dependencies, then install this package into the
     # virtualenv's dist-packages.
     session.install(
-        "mock",
-        "pytest",
-        "google-cloud-testutils",
+        "mock", "pytest", "google-cloud-testutils",
     )
     session.install("-e", ".")
 
