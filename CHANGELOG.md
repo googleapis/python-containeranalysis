@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.4](https://github.com/googleapis/python-containeranalysis/compare/v1.0.3...v1.0.4) (2022-04-04)
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core >= 1.31.5, >= 2.3.2 on v1 release ([#260](https://github.com/googleapis/python-containeranalysis/issues/260)) ([be6fb87](https://github.com/googleapis/python-containeranalysis/commit/be6fb87d6d3e00d798b37dc89324ca88d3da6107))
+
 ### [1.0.3](https://www.github.com/googleapis/python-containeranalysis/compare/v1.0.2...v1.0.3) (2020-08-11)
 
 
