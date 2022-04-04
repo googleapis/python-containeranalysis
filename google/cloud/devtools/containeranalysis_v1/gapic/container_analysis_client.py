@@ -179,8 +179,12 @@ class ContainerAnalysisClient(object):
                     )
                 self.transport = transport
         else:
-            self.transport = container_analysis_grpc_transport.ContainerAnalysisGrpcTransport(
-                address=api_endpoint, channel=channel, credentials=credentials,
+            self.transport = (
+                container_analysis_grpc_transport.ContainerAnalysisGrpcTransport(
+                    address=api_endpoint,
+                    channel=channel,
+                    credentials=credentials,
+                )
             )
 
         if client_info is None:
@@ -289,7 +293,10 @@ class ContainerAnalysisClient(object):
                 client_info=self._client_info,
             )
 
-        request = iam_policy_pb2.SetIamPolicyRequest(resource=resource, policy=policy,)
+        request = iam_policy_pb2.SetIamPolicyRequest(
+            resource=resource,
+            policy=policy,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -374,7 +381,8 @@ class ContainerAnalysisClient(object):
             )
 
         request = iam_policy_pb2.GetIamPolicyRequest(
-            resource=resource, options=options_,
+            resource=resource,
+            options=options_,
         )
         if metadata is None:
             metadata = []
@@ -461,7 +469,8 @@ class ContainerAnalysisClient(object):
             )
 
         request = iam_policy_pb2.TestIamPermissionsRequest(
-            resource=resource, permissions=permissions,
+            resource=resource,
+            permissions=permissions,
         )
         if metadata is None:
             metadata = []
