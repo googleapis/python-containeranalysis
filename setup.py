@@ -29,6 +29,7 @@ dependencies = [
     "grpc-google-iam-v1 >= 0.12.3, < 0.13dev",
     'enum34; python_version < "3.4"',
     "grafeas < 1.0.0dev",
+    "protobuf<4.0.0dev",
 ]
 
 
