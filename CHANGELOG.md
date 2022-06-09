@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/googleapis/python-containeranalysis/compare/v1.0.4...v1.0.5) (2022-06-07)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf<4.0.0 on v1 branch ([#296](https://github.com/googleapis/python-containeranalysis/issues/296)) ([87ce6a6](https://github.com/googleapis/python-containeranalysis/commit/87ce6a6fed7888f17f10ef08e12405ad97bff549))
+
 ### [1.0.4](https://github.com/googleapis/python-containeranalysis/compare/v1.0.3...v1.0.4) (2022-04-04)
 
 
