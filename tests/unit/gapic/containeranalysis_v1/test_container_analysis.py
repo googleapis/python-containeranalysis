@@ -1961,7 +1961,6 @@ def test_container_analysis_transport_auth_adc(transport_class):
     [
         transports.ContainerAnalysisGrpcTransport,
         transports.ContainerAnalysisGrpcAsyncIOTransport,
-        transports.ContainerAnalysisRestTransport,
     ],
 )
 def test_container_analysis_transport_auth_gdch_credentials(transport_class):
