@@ -3,7 +3,7 @@ Python Client for Cloud Container Analysis API
 
 |stable| |pypi| |versions|
 
-`Cloud Container Analysis API`_: 
+`Cloud Container Analysis API`_: is a service that provides vulnerability scanning and metadata storage for software artifacts. The service performs vulnerability scans on built software artifacts, such as the images in Container Registry, then stores the resulting metadata and makes it available for consumption through an API. The metadata may come from several sources, including vulnerability scanning, other Cloud services, and third-party providers.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
