@@ -1,6 +1,6 @@
 {
     "name": "containeranalysis",
-    "name_pretty": "Cloud Container Analysis",
+    "name_pretty": "Container Analysis",
     "product_documentation": "https://cloud.google.com/container-registry/docs/container-analysis",
     "client_documentation": "https://cloud.google.com/python/docs/reference/containeranalysis/latest",
     "issue_tracker": "https://issuetracker.google.com/savedsearches/559777",
