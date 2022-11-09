@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -176,9 +186,9 @@ class ContainerAnalysisAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, ContainerAnalysisTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the container analysis client.
@@ -236,11 +246,11 @@ class ContainerAnalysisAsyncClient:
 
     async def set_iam_policy(
         self,
-        request: Union[iam_policy_pb2.SetIamPolicyRequest, dict] = None,
+        request: Optional[Union[iam_policy_pb2.SetIamPolicyRequest, dict]] = None,
         *,
-        resource: str = None,
+        resource: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Sets the access control policy on the specified note or
@@ -281,7 +291,7 @@ class ContainerAnalysisAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.iam.v1.iam_policy_pb2.SetIamPolicyRequest, dict]):
+            request (Optional[Union[google.iam.v1.iam_policy_pb2.SetIamPolicyRequest, dict]]):
                 The request object. Request message for `SetIamPolicy`
                 method.
             resource (:class:`str`):
@@ -410,11 +420,11 @@ class ContainerAnalysisAsyncClient:
 
     async def get_iam_policy(
         self,
-        request: Union[iam_policy_pb2.GetIamPolicyRequest, dict] = None,
+        request: Optional[Union[iam_policy_pb2.GetIamPolicyRequest, dict]] = None,
         *,
-        resource: str = None,
+        resource: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Gets the access control policy for a note or an occurrence
@@ -455,7 +465,7 @@ class ContainerAnalysisAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.iam.v1.iam_policy_pb2.GetIamPolicyRequest, dict]):
+            request (Optional[Union[google.iam.v1.iam_policy_pb2.GetIamPolicyRequest, dict]]):
                 The request object. Request message for `GetIamPolicy`
                 method.
             resource (:class:`str`):
@@ -584,12 +594,12 @@ class ContainerAnalysisAsyncClient:
 
     async def test_iam_permissions(
         self,
-        request: Union[iam_policy_pb2.TestIamPermissionsRequest, dict] = None,
+        request: Optional[Union[iam_policy_pb2.TestIamPermissionsRequest, dict]] = None,
         *,
-        resource: str = None,
-        permissions: Sequence[str] = None,
+        resource: Optional[str] = None,
+        permissions: Optional[MutableSequence[str]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> iam_policy_pb2.TestIamPermissionsResponse:
         r"""Returns the permissions that a caller has on the specified note
@@ -630,7 +640,7 @@ class ContainerAnalysisAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.iam.v1.iam_policy_pb2.TestIamPermissionsRequest, dict]):
+            request (Optional[Union[google.iam.v1.iam_policy_pb2.TestIamPermissionsRequest, dict]]):
                 The request object. Request message for
                 `TestIamPermissions` method.
             resource (:class:`str`):
@@ -642,7 +652,7 @@ class ContainerAnalysisAsyncClient:
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            permissions (:class:`Sequence[str]`):
+            permissions (:class:`MutableSequence[str]`):
                 The set of permissions to check for the ``resource``.
                 Permissions with wildcards (such as '*' or 'storage.*')
                 are not allowed. For more information see `IAM
@@ -708,14 +718,14 @@ class ContainerAnalysisAsyncClient:
 
     async def get_vulnerability_occurrences_summary(
         self,
-        request: Union[
-            containeranalysis.GetVulnerabilityOccurrencesSummaryRequest, dict
+        request: Optional[
+            Union[containeranalysis.GetVulnerabilityOccurrencesSummaryRequest, dict]
         ] = None,
         *,
-        parent: str = None,
-        filter: str = None,
+        parent: Optional[str] = None,
+        filter: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> containeranalysis.VulnerabilityOccurrencesSummary:
         r"""Gets a summary of the number and severity of
@@ -748,7 +758,7 @@ class ContainerAnalysisAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.devtools.containeranalysis_v1.types.GetVulnerabilityOccurrencesSummaryRequest, dict]):
+            request (Optional[Union[google.cloud.devtools.containeranalysis_v1.types.GetVulnerabilityOccurrencesSummaryRequest, dict]]):
                 The request object. Request to get a vulnerability
                 summary for some set of occurrences.
             parent (:class:`str`):
