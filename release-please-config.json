@@ -7,6 +7,11 @@
         "google/cloud/devtools/containeranalysis/gapic_version.py",
         {
           "type": "json",
+          "path": "samples/generated_samples/snippet_metadata_google.devtools.containeranalysis.v1.json",
+          "jsonpath": "$.clientLibrary.version"
+        },
+        {
+          "type": "json",
           "path": "samples/generated_samples/snippet_metadata_containeranalysis_v1.json",
           "jsonpath": "$.clientLibrary.version"
         }
