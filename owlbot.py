@@ -155,7 +155,7 @@ for library in s.get_staging_dirs(default_version):
 
     assert num_replacements == 1
 
-    s.move([library], excludes=["**/gapic_version.py"])
+    s.move([library], excludes=["**/gapic_version.py", "testing/constraints-3.7.txt"])
 s.remove_staging_dirs()
 
 # ----------------------------------------------------------------------------
