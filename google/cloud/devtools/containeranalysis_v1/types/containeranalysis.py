@@ -17,7 +17,7 @@ from typing import MutableMapping, MutableSequence
 
 import proto  # type: ignore
 
-from grafeas.grafeas_v1.types import severity  # type: ignore
+import grafeas.grafeas_v1  # type: ignore
 
 
 __protobuf__ = proto.module(
@@ -68,7 +68,7 @@ class VulnerabilityOccurrencesSummary(proto.Message):
         Attributes:
             resource_uri (str):
                 The affected resource.
-            severity (grafeas.v1.severity.Severity):
+            severity (grafeas.v1.grafeas.grafeas_v1.Severity):
                 The severity for this count. SEVERITY_UNSPECIFIED indicates
                 total across all severities.
             fixable_count (int):
@@ -83,10 +83,10 @@ class VulnerabilityOccurrencesSummary(proto.Message):
             proto.STRING,
             number=1,
         )
-        severity: severity.Severity = proto.Field(
+        severity: grafeas.grafeas_v1.Severity = proto.Field(
             proto.ENUM,
             number=2,
-            enum=severity.Severity,
+            enum=grafeas.grafeas_v1.Severity,
         )
         fixable_count: int = proto.Field(
             proto.INT64,

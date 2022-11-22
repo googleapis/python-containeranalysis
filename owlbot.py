@@ -34,23 +34,16 @@ for library in s.get_staging_dirs(default_version):
         shutil.rmtree("samples/generated_samples", ignore_errors=True)
         clean_up_generated_samples = False
 
-    # remove once https://critique.corp.google.com/cl/490040802 is submitted
-    s.replace(
-        library / "google/**/*client.py",
-        r"""google-cloud-devtools-containeranalysis""",
-        r"""google-cloud-containeranalysis""",
-    )
-
     # Fix imported type from grafeas
     s.replace(
         library / "google/**/types/containeranalysis.py",
         "from grafeas\.v1 import severity_pb2",
-        "from grafeas.grafeas_v1.types import severity",
+        "import grafeas.grafeas_v1",
     )
 
     # Fix imported type from grafeas
     s.replace(
-        library / "google/**/types/containeranalysis.py", "severity_pb2", "severity"
+        library / "google/**/types/containeranalysis.py", "severity_pb2", "grafeas.grafeas_v1"
     )
 
     # Insert helper method to get grafeas client
@@ -155,7 +148,7 @@ for library in s.get_staging_dirs(default_version):
 
     assert num_replacements == 1
 
-    s.move([library], excludes=["**/gapic_version.py", "testing/constraints-3.7.txt"])
+    s.move([library], excludes=["**/gapic_version.py", "setup.py", "testing/constraints-3.7.txt"])
 s.remove_staging_dirs()
 
 # ----------------------------------------------------------------------------
