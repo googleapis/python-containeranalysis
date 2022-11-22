@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .client import ContainerAnalysisClient
 from .async_client import ContainerAnalysisAsyncClient
+from .client import ContainerAnalysisClient
 
 __all__ = (
     "ContainerAnalysisClient",

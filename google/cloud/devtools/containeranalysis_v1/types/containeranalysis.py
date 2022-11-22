@@ -15,10 +15,8 @@
 #
 from typing import MutableMapping, MutableSequence
 
-import proto  # type: ignore
-
 import grafeas.grafeas_v1  # type: ignore
-
+import proto  # type: ignore
 
 __protobuf__ = proto.module(
     package="google.devtools.containeranalysis.v1",

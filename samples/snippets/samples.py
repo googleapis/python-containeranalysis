@@ -20,8 +20,8 @@ def create_note(note_id, project_id):
     # note_id = 'my-note'
     # project_id = 'my-gcp-project'
 
-    from grafeas.grafeas_v1 import Version
     from google.cloud.devtools import containeranalysis_v1
+    from grafeas.grafeas_v1 import Version
 
     client = containeranalysis_v1.ContainerAnalysisClient()
     grafeas_client = client.get_grafeas_client()
@@ -74,8 +74,8 @@ def create_occurrence(resource_url, note_id, occurrence_project, note_project):
     # occurrence_project = 'my-gcp-project'
     # note_project = 'my-gcp-project'
 
-    from grafeas.grafeas_v1 import Version
     from google.cloud.devtools import containeranalysis_v1
+    from grafeas.grafeas_v1 import Version
 
     client = containeranalysis_v1.ContainerAnalysisClient()
     grafeas_client = client.get_grafeas_client()
@@ -238,6 +238,7 @@ def pubsub(subscription_id, timeout_seconds, project_id):
     # project_id = 'my-gcp-project'
 
     import time
+
     from google.cloud.pubsub import SubscriberClient
 
     client = SubscriberClient()
@@ -303,8 +304,9 @@ def poll_discovery_finished(resource_url, timeout_seconds, project_id):
     # project_id = 'my-gcp-project'
 
     import time
-    from grafeas.grafeas_v1 import DiscoveryOccurrence
+
     from google.cloud.devtools import containeranalysis_v1
+    from grafeas.grafeas_v1 import DiscoveryOccurrence
 
     deadline = time.time() + timeout_seconds
 
@@ -376,8 +378,8 @@ def find_high_severity_vulnerabilities_for_image(resource_url, project_id):
     # resource_url = 'https://gcr.io/my-project/my-image@sha256:123'
     # project_id = 'my-gcp-project'
 
-    from grafeas.grafeas_v1 import Severity
     from google.cloud.devtools import containeranalysis_v1
+    from grafeas.grafeas_v1 import Severity
 
     client = containeranalysis_v1.ContainerAnalysisClient()
     grafeas_client = client.get_grafeas_client()

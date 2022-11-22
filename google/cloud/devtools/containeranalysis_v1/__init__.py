@@ -18,11 +18,14 @@ from google.cloud.devtools.containeranalysis import gapic_version as package_ver
 __version__ = package_version.__version__
 
 
-from .services.container_analysis import ContainerAnalysisClient
-from .services.container_analysis import ContainerAnalysisAsyncClient
-
-from .types.containeranalysis import GetVulnerabilityOccurrencesSummaryRequest
-from .types.containeranalysis import VulnerabilityOccurrencesSummary
+from .services.container_analysis import (
+    ContainerAnalysisAsyncClient,
+    ContainerAnalysisClient,
+)
+from .types.containeranalysis import (
+    GetVulnerabilityOccurrencesSummaryRequest,
+    VulnerabilityOccurrencesSummary,
+)
 
 __all__ = (
     "ContainerAnalysisAsyncClient",

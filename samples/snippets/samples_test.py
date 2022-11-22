@@ -19,16 +19,10 @@ import threading
 import time
 import uuid
 
-from google.api_core.exceptions import AlreadyExists
-from google.api_core.exceptions import InvalidArgument
-from google.api_core.exceptions import NotFound
+from google.api_core.exceptions import AlreadyExists, InvalidArgument, NotFound
 from google.cloud.devtools import containeranalysis_v1
 from google.cloud.pubsub import PublisherClient, SubscriberClient
-
-from grafeas.grafeas_v1 import DiscoveryOccurrence
-from grafeas.grafeas_v1 import NoteKind
-from grafeas.grafeas_v1 import Severity
-from grafeas.grafeas_v1 import Version
+from grafeas.grafeas_v1 import DiscoveryOccurrence, NoteKind, Severity, Version
 import pytest
 
 import samples
